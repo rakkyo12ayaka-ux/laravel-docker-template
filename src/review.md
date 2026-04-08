@@ -34,7 +34,6 @@ $todo：Collectionインスタンスに格納されているTodoインスタン�
 
 ### saveメソッドで実行しているSQLは何か
 contentを含む複数カラムを挿入(INSERT)している
-→$fillableで許可されているカラムのみ？
 
 ### redirect()->route()は何をしているか
 ToDoが新規作成された後に、一覧画面にリダイレクトし一覧画面を表示させている
