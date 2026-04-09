@@ -46,4 +46,13 @@ public function show($id)
     return view('todo.show', ['todo' => $todo]);
 }
 
+//ルートパラメータを引数に受け取る
+public function edit($id)
+{
+    //編集対象のレコードの情報を持つTodoモデルのインスタンスを取得
+    $todo = $this->todo->find($id);
+    //view()を使用して編集画面を表示
+    return view('todo.edit',['todo' => $todo]);
+}
+
 }
