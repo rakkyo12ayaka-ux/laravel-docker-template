@@ -28,13 +28,11 @@ class TodoController extends Controller
 public function store(TodoRequest $request)
 {
     $inputs = $request->all();
-    // dd($inputs);
 
-    // 1. todosテーブルの1レコードを表すTodoクラスをインスタンス化
     $todo = new Todo(); 
-    // 2. Todoインスタンスのカラム名のプロパティに保存したい値を代入
+    
     $this->todo->fill($inputs);
-    // 3. Todoインスタンスの`->save()`を実行してオブジェクトの状態をDBに保存するINSERT文を実行
+    
     $this->todo->save();
 
     return redirect()->route('todo.index');
@@ -46,22 +44,19 @@ public function show($id)
     return view('todo.show', ['todo' => $todo]);
 }
 
-//ルートパラメータを引数に受け取る
 public function edit($id)
-{
-    //編集対象のレコードの情報を持つTodoモデルのインスタンスを取得
+{ 
     $todo = $this->todo->find($id);
-    //view()を使用して編集画面を表示
+    
     return view('todo.edit',['todo' => $todo]);
 }
 
-public function update(TodoRequest $request, $id)//第1引数:リクエスト情報の取得　第2引数:ルートパラメータの取得
+public function update(TodoRequest $request, $id)
 {
-    //リクエストされた値を取得
     $inputs = $request->all();
-    //更新対象のデータを取得
+    
     $todo = $this->todo->find($id);
-    //更新したい値の代入とUPDATE文の実行
+    
     $todo->fill($inputs)->save();
 
     return redirect()->route('todo.show', $todo->id);
