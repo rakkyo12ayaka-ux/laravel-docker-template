@@ -28,8 +28,6 @@ class TodoController extends Controller
 public function store(TodoRequest $request)
 {
     $inputs = $request->all();
-
-    $todo = new Todo(); 
     
     $this->todo->fill($inputs);
     
